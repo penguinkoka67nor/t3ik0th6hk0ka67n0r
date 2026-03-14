@@ -1,0 +1,68 @@
+class PenguinUtils {
+  constructor() {
+    this.lastKey = "";
+
+    document.addEventListener("keydown", e => {
+      this.lastKey = e.key;
+    });
+  }
+
+  getInfo() {
+    return {
+      id: "penguinutils",
+      name: "Penguin Utils",
+      color1: "#ff0000",
+      color2: "#00ff00",
+      color3: "#0000ff",
+      blocks: [
+        {
+          opcode: "lastKey",
+          blockType: Scratch.BlockType.REPORTER,
+          text: "last key pressed"
+        },
+        {
+          opcode: "isPenguinMod",
+          blockType: Scratch.BlockType.BOOLEAN,
+          text: "is PenguinMod?"
+        },
+        {
+          opcode: "isTurboWarp",
+          blockType: Scratch.BlockType.BOOLEAN,
+          text: "is TurboWarp?"
+        },
+        {
+          opcode: "randomColor",
+          blockType: Scratch.BlockType.REPORTER,
+          text: "random color"
+        },
+        {
+          opcode: "randomID",
+          blockType: Scratch.BlockType.REPORTER,
+          text: "random id"
+        }
+      ]
+    };
+  }
+
+  lastKey() {
+    return this.lastKey || "";
+  }
+
+  isPenguinMod() {
+    return typeof window.PenguinMod !== "undefined";
+  }
+
+  isTurboWarp() {
+    return typeof window.vm !== "undefined";
+  }
+
+  randomColor() {
+    return "#" + Math.floor(Math.random()*16777215).toString(16);
+  }
+
+  randomID() {
+    return Math.random().toString(36).substring(2,10);
+  }
+}
+
+Scratch.extensions.register(new PenguinUtils());
