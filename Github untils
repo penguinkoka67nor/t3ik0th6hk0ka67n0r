@@ -1,0 +1,22 @@
+let lastKey = "";
+
+document.addEventListener("keydown", e => {
+  lastKey = e.key;
+}
+);
+
+export function getLastKey() {
+  return lastKey;
+}export function isPenguinMod() {
+  return typeof window.PenguinMod !== "undefined";
+}
+
+export function isTurboWarp() {
+  return typeof window.vm !== "undefined";
+}
+export function randomID() {
+  return Math.random().toString(36).substring(2,10);
+}
+export function randomColor() {
+  return "#" + Math.floor(Math.random()*16777215).toString(16);
+}
